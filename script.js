@@ -33,10 +33,10 @@ const loginMessage = document.getElementById('loginMessage');
 loginForm.addEventListener('submit', function(event) {
   event.preventDefault();
   
-  const identifier = document.getElementById('identifier').value;
+  const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
   
-  const foundUser = users.find(user => (user.email === identifier || user.username === identifier) && user.password === password);
+  const foundUser = users.find(user => user.username === username && user.password === password);
   
   if (foundUser) {
     loginMessage.textContent = 'Login successful. Redirecting to home page...';
@@ -44,6 +44,7 @@ loginForm.addEventListener('submit', function(event) {
       window.location.href = 'home.html'; // Redirect to home page
     }, 2000);
   } else {
-    loginMessage.textContent = 'Invalid email/username or password. Please try again.';
+    loginMessage.textContent = 'Invalid username or password. Please try again.';
   }
 });
+               
